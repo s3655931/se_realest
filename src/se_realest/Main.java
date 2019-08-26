@@ -1,5 +1,6 @@
 package se_realest;
 import java.util.*;
+import linkedlist.LinkedList;
 import properties.*;
 
 public class Main {

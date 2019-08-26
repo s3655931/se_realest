@@ -1,12 +1,12 @@
 package employees;
 
-public class Employee {
+public abstract class Employee {
 
-	// Name
-	// Salary
-	// ID
+	private String name;
+	private float salary;
+	private String employee;
 	
-	// Email
+	private String email;
 	
 	
 }
