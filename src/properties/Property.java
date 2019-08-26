@@ -9,6 +9,7 @@ public class Property {
 	// Type - unit, etc
 	// Rent/Buy
 	// Minimum Price
+	// Section 32
 	
 	//For sale/rent?
 	
