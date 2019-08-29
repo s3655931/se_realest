@@ -1,14 +1,14 @@
 package properties;
-import java.util.LinkedList;
+import java.util.HashMap;
 
 public class RentalProperty extends Property{
 	
-	private float rentalPrice; //weekly rental price for property (460.00)
+	private double rentalPrice; //weekly rental price for property (460.00)
 	private int leaseLength; //months of rental lease
 	private String tenantId; //customer id of tenant renting property
-	LinkedList<Offer> rentalOffers = new LinkedList<Offer>(); //list of rental offers (applications)
+	HashMap<Integer,Offer> rentalOffers = new HashMap<Integer,Offer>(); //list of rental offers (applications)
 	
-	public RentalProperty(String address, String suburb, String owner, float price) {
+	public RentalProperty(String address, String suburb, String owner, double price) {
 		
 		//the minimum required information from the owner to list a rental property: address/suburb, price
 		super(address, suburb, owner);
@@ -26,6 +26,12 @@ public class RentalProperty extends Property{
 		
 	}
 	
+	
+	@Override
+	public String toString() {
+		return String.format("%s %s, owned by %s, $%.2f weekly.",this.address, this.suburb, this.owner, this.rentalPrice);
+		
+	}
 	
 	
 }

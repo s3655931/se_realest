@@ -3,11 +3,11 @@ import java.util.LinkedList;
 
 public class SaleProperty extends Property{
 	
-	private float salePrice; //advertised asking price for property
+	private double salePrice; //advertised asking price for property
 	private String buyerId; //customer id of tenant renting property
 	LinkedList<Offer> saleOffers = new LinkedList<Offer>(); 
 	
-	public SaleProperty(String address, String suburb, String owner, float price) {
+	public SaleProperty(String address, String suburb, String owner, double price) {
 		
 		//the minimum required information from the owner to list a rental property: address/suburb, price
 		super(address, suburb, owner);
