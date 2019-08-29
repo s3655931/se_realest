@@ -1,28 +1,24 @@
 package properties;
-import java.util.LinkedList;
+import java.util.HashMap;
+import customers.Customer;
 
 public class SaleProperty extends Property{
 	
 	private double salePrice; //advertised asking price for property
-	private String buyerId; //customer id of tenant renting property
-	LinkedList<Offer> saleOffers = new LinkedList<Offer>(); 
+//	private boolean hasSection32 = false;
+	HashMap<Integer,Offer> saleOffers = new HashMap<Integer,Offer>(); 
 	
-	public SaleProperty(String address, String suburb, String owner, double price) {
-		
+	public SaleProperty(String id, String address, String suburb, Customer owner, double price) {
 		//the minimum required information from the owner to list a rental property: address/suburb, price
-		super(address, suburb, owner);
+		super(id, address, suburb, owner);
 		this.salePrice = price;
-		
 	}
 	
-	//a property won't have a tenant upon creation, so call this when someone successfully rents it
-	public boolean assignNewOwner(String customerId, float price) {
-		
-		this.owner = customerId;
+    public boolean assignNewOwner(Customer customer, float price) {
+		this.owner = customer;
 		System.out.printf("Customer %s is now the owner of %s,%s after paying $%.2f.",
 							this.owner,this.address,this.suburb, price);
 		return true;
-		
 	}
 	
 	

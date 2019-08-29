@@ -1,15 +1,22 @@
 package properties;
+import customers.Customer;
 
 public class Offer {
 	
 	private String customerId;
-	private float price;
+	private double price;
+	
+	public Offer(Customer customer, double price) {
+		this.customerId = customer.getId();
+		this.price = price;
+	}
+	
 	
 	public String getCustomer() {
 		return this.customerId;
 	}
 	
-	public float getPrice() {
+	public double getPrice() {
 		return this.price;
 	}
 	

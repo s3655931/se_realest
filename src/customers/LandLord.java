@@ -1,5 +1,5 @@
 package customers;
 
-public class LandLord {
+public class LandLord{
 
 }
