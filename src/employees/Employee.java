@@ -15,4 +15,13 @@ public abstract class Employee {
 	public String getName() {
 		return this.name;
 	}
+	
+	public String getId() {
+		return this.id;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("%s, E-mail: %s", this.name, this.email);
+	}
 }

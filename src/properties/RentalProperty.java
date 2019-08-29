@@ -30,7 +30,7 @@ public class RentalProperty extends Property {
 
 	@Override
 	public String toString() {
-		return String.format("%s %s, owned by %s, $%.2f weekly.", this.address, this.suburb, this.owner,
+		return String.format("%s %s, owned by %s, $%.2f weekly", this.address, this.suburb, this.owner,
 				this.rentalPrice);
 	}
 }

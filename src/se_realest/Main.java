@@ -37,6 +37,8 @@ public class Main {
 				 break;
 		case 2:  customerMenu();
 				 break;
+		case 3:  employeeMenu();
+				 break;
 		default: mainMenu();
 				 break;
 		}
@@ -53,6 +55,7 @@ public class Main {
 				+ "5: View all Rental Properties\n"
 				+ "6: View all Sale Properties\n"
 				+ "7: Assign Agent to Rental Property\n"
+				+ "8: See Offers on a Property\n"
 				+ "8: Main Menu\n\n"
 				+ "Enter Selection: ");
 		switch(sc.nextInt()) {
@@ -104,6 +107,9 @@ public class Main {
 		switch(sc.nextInt()) {
 		case 1:  newEmployee();
 				 break;
+		case 3:  System.out.print(getAllEmployees());
+		 		 mainMenu();
+		 		 break;
 		case 4: mainMenu();
 		default: mainMenu();
 				 break;
@@ -135,8 +141,8 @@ public class Main {
 		System.out.print("Length of lease in months:");
 		int leaseLength = sc.nextInt();
 		rentalProperties.put(id, new RentalProperty(id, address, suburb, owner, price, leaseLength));
-		System.out.printf("\n%s %s, owned by %s, has been successfully listed for $%.2f weekly.\n\n",
-				address,suburb,owner.getName(),price);
+		System.out.printf("\n%s | %s %s, owned by %s, has been successfully listed for $%.2f weekly, for %d months.\n\n",
+				id, address,suburb,owner.getName(),price,leaseLength);
 		propertyMenu();
 	}
 	
@@ -162,8 +168,8 @@ public class Main {
 		price = sc.nextInt();
 		String id = newPropertyId();
 		saleProperties.put(id, new SaleProperty(id, address, suburb, owner, price));
-		System.out.printf("\n%s %s, owned by %s, has been successfully listed for $%.2f.\n\n",
-				address,suburb,owner,price);
+		System.out.printf("\n%s | %s %s, owned by %s, has been successfully listed for $%.2f.\n\n",
+				id, address,suburb,owner,price);
 		propertyMenu();
 	}
 	
@@ -187,7 +193,7 @@ public class Main {
 			System.out.print("Weekly rostered hours:");
 			int weeklyHours = sc.nextInt();
 			employees.put(id, new PartTimeEmployee(id, name, email, hourlyPay, weeklyHours));
-			System.out.printf("Part-Time Employee %s successfully added.");
+			System.out.printf("Part-Time Employee %s | %s successfully added.\n", id, name);
 		} else if (workLoad==2) {
 			System.out.print("Yearly salary in dollars (and cents if applicable):");
 			double salary = sc.nextDouble();
@@ -222,6 +228,14 @@ public class Main {
 		return result.toString();
 	}
 	
+	private static String getAllEmployees() {
+		StringBuilder result = new StringBuilder();
+		employees.forEach((key, value) -> 
+		result.append(String.format("ID: %s | %s\n", key, value.toString())));
+		return result.toString();
+	}
+
+	
 	private static void assignRentalAgent() {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf("\nPlease enter ID of property you'd like to assign a rental agent:\n");
@@ -232,10 +246,11 @@ public class Main {
 		//using the id of the employee, find the associated Employee object
 		//then set the agent of the found property to the found property
 		rentalProperties.get(property).assignPropertyManager(employees.get(agent));
-		System.out.printf("%s has been successfully assigned to the rental agent %s.",
-				          rentalProperties.get(property).toString(), employees.get(agent).getName());
+		System.out.printf("%s has been successfully assigned to rental agent %s | %s.\n\n",
+				          agent, rentalProperties.get(property).toString(), employees.get(agent).getName());
 		propertyMenu();
 	}
+	
 	
 	// Increments the global ID and prefixes with letter corresponding with customer type.
 	public static String newPropertyId() {
