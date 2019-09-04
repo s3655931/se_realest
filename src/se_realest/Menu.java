@@ -247,7 +247,6 @@ public class Menu {
 		Main.applyForRental(userId);
 	}
 	
-	
 	private void logout() {
 		Main.logout();
 	}

@@ -8,7 +8,7 @@ public abstract class Employee {
 	protected String name;
 	protected String email;
 	protected double salary;
-	private int employeeType;
+	protected int employeeType;
 	/* Employee Types:
 	 * 0: God
 	 * 5: SalesConsultant

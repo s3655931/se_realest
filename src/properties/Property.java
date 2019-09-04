@@ -1,7 +1,7 @@
 package properties;
 import se_realest.*;
 
-public class Property {
+public abstract class Property {
 
 	protected String propertyId; //property id (100)
 	protected String address; //address (123 Fake St)
