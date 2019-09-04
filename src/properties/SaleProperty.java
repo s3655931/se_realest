@@ -42,8 +42,8 @@ public class SaleProperty extends Property{
     	return String.format("%s %s, owned by %s, asking $%,.2f, %s%s%s", 
 				this.address, this.suburb, Main.getCustomerName(this.ownerId), this.salePrice, 
 				this.onMarket ? "Available for purchase. " : "Unavailable for purchase. ", 
-				this.onMarket ? this.saleOffers.size() + " offer(s)." : "", 
-				this.onMarket ? this.saleInspections.size() + " inspections scheduled." : "");
+				this.onMarket ? this.saleOffers.size() + " offer(s). " : "", 
+				this.onMarket ? this.saleInspections.size() + " inspection(s) scheduled." : "");
     }
 
 }

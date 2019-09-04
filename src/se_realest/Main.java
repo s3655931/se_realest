@@ -274,7 +274,7 @@ public class Main {
 	
 	static String addSaleProperty(String id, String address, String suburb, String ownerId, double price) {
 		saleProperties.put(id, new SaleProperty(id, address, suburb, ownerId, price));
-		return String.format("\n%s | %s %s, asking $%.2f, has been sent to S&E for Management. Check back soon for updates.\n\n",
+		return String.format("\n%s | %s %s, owned by %s, asking $%,.2f, has been sent to S&E for Management. Check back soon for updates.\n\n",
 				id, address,suburb,ownerId,price);
 	}
 	
@@ -420,7 +420,7 @@ public class Main {
 	static String getSalesBy(String customerId) {
 		StringBuilder result = new StringBuilder();
 		for (String propertyId: customers.get(customerId).getSaleProperties()) {
-			result.append(saleProperties.get(propertyId).toString() + "\n");
+			result.append(propertyId + " | " + saleProperties.get(propertyId).toString() + "\n");
 		}
 		return result.toString();
 	}

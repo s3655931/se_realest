@@ -1,0 +1,26 @@
+SAMPLE DEMO THING
+MOSTLY GODMODE (Just showing capable functions, not a typical user experience)
+SOME USERMODE (Some basic Renter functions)
+
+1. Login as boss@serealest.com.au
+2. Properties
+3. View all Rental Properties
+4. View all Sale Properties
+5. See Offers on Sale Property P099
+6. Main Menu
+8. Customers
+9. View all Customers
+10. Note Donald Duck, let's login as a renter
+11. Main Menu
+12. Logout
+13. Login as donald@duck.com
+14. Browse all Rentals (only available ones show)
+15. Search for Rentals in Hawthorn
+16. Apply for a 100 Green Road, Hawthorn P011 for like, 760
+17. View your Offers 
+18. Logout
+19. Login as trump@donaldtrump.com
+20. Add Property
+21. 123 Fake St, Melbourne, 1000000
+22. Logout again
+23. End
