@@ -36,32 +36,39 @@ public class Main {
 		String input;
 		System.out.printf("\n\nWelcome To The VeryCool™ S&E Real Estate Software Solution\n\n" + 
 							"Please enter your e-mail address to login (or leave blank to make a new account):");
-		input = sc.next();
-		//check if user is customer
-		for (Customer customer: customers.values()) {
-		    if(customer.compareLogin(input)) {
-		    	user = customer.getId();
-		    	System.out.printf("\nWelcome %s.\n",customer.getName()); 
-		    	menu = new Menu(user,customer.getCustomerType());
-		    	menu.begin();
-		    	break;
-		    }
-		}
-		//check if user is employee
-		for (Employee employee: employees.values()) {
-		    if(employee.compareLogin(input)) {
-		    	user = employee.getId();
-		    	System.out.printf("\nWelcome %s.\n",employee.getName());
-		    	if(employee.getEmployeeType()==0) {
-		    		godMenu = new GodMenu(user,0);
-		    		godMenu.godMenu();
-		    		break;
-		    	} else {
-		    		menu = new Menu(user, employee.getEmployeeType());
-		    		menu.begin();
-		    		break;
-		    	}
-		    }
+		input = sc.nextLine();
+		if(input.equals("")) {
+			String newCust = newCustomer();
+			menu = new Menu(newCust,customers.get(newCust).getCustomerType());
+			menu.begin();			
+		} else {
+		
+			//check if user is customer
+			for (Customer customer: customers.values()) {
+			    if(customer.compareLogin(input)) {
+			    	user = customer.getId();
+			    	System.out.printf("\nWelcome %s.\n",customer.getName()); 
+			    	menu = new Menu(user,customer.getCustomerType());
+			    	menu.begin();
+			    	break;
+			    }
+			}
+			//check if user is employee
+			for (Employee employee: employees.values()) {
+			    if(employee.compareLogin(input)) {
+			    	user = employee.getId();
+			    	System.out.printf("\nWelcome %s.\n",employee.getName());
+			    	if(employee.getEmployeeType()==0) {
+			    		godMenu = new GodMenu(user,0);
+			    		godMenu.godMenu();
+			    		break;
+			    	} else {
+			    		menu = new Menu(user, employee.getEmployeeType());
+			    		menu.begin();
+			    		break;
+			    	}
+			    }
+			}
 		}
 	}
 	
