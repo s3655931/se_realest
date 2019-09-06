@@ -34,7 +34,7 @@ public class Main {
 		user = "";
 		Scanner sc = new Scanner(System.in);
 		String input;
-		System.out.printf("\n\nWelcome To The VeryCool™ S&E Real Estate Software Solution\n\n" + 
+		System.out.printf("\n\nWelcome To The VeryCool S&E Real Estate Software Solution\n\n" + 
 							"Please enter your e-mail address to login (or leave blank to make a new account):");
 		input = sc.next();
 		//check if user is customer
@@ -67,12 +67,13 @@ public class Main {
 	
 	public static void mainMenuCustomer() {
 		System.out.print("Customer");
+		
 	}
 	
 	public static void mainMenuManager() {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
-				  "\n\nWelcome To The VeryCool™ S&E Real Estate Software Solution\n"
+				  "\n\nWelcome To The VeryCool S&E Real Estate Software Solution\n"
 				  + "Branch Manager Menu\n"
 				+ "What would you like to do?\n\n"
 				+ "1: Add, Remove, or View Properties\n"
@@ -119,12 +120,12 @@ public class Main {
 	public static void mainMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
-				  "\n\nWelcome To The VeryCool™ S&E Real Estate Software Solution\n\n"
+				  "\n\nWelcome To The VeryCool S&E Real Estate Software Solution\n\n"
 				+ "What would you like to do?\n\n"
 				+ "1: Add, Remove, or View Properties\n"
 				+ "2: Add, Remove, or View Customers\n"
 				+ "3: Add, Remove, or View Employees\n"
-				+ "4: Under Construction\n\n"
+				+ "4: Logout\n\n"
 				+ "Enter Selection: ");
 		int input = sc.nextInt();
 		switch(input) {
@@ -134,6 +135,8 @@ public class Main {
 				 break;
 		case 3:  employeeMenu();
 				 break;
+		case 4:  logout();
+		
 		default: mainMenu();
 				 break;
 		}
@@ -185,6 +188,10 @@ public class Main {
 		int input = sc.nextInt();
 		switch(input) {
 		case 1:  newCustomer();
+				 mainMenu();
+				 break;
+		case 2:	 removeCustomer();
+				 mainMenu();
 				 break;
 		case 3:  System.out.print(getAllCustomers());
 				 mainMenu();
@@ -195,6 +202,8 @@ public class Main {
 		}
 	}
 	
+	
+
 	private static void employeeMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
@@ -388,6 +397,16 @@ public class Main {
 		customers.put(id, new Customer(id,name,email,type));
 		System.out.printf("Customer %s, %s has been successfully added.\n",id, name);
 		return id;
+	}
+	
+	static void removeCustomer() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Customer ID:");
+		String id = sc.nextLine();
+		String name1 = customers.get(id).getName();
+		customers.remove(id);
+		System.out.println("Customer " + id + " - " + name1 + " has been removed.");
+		return;
 	}
 	
 	static String getAllSales() {

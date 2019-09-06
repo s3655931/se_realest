@@ -33,13 +33,13 @@ public class Menu {
 				break;
 		case 2: landlordMenu();
 				break;
-		case 3: //buyerMenu();
+		case 3: buyerMenu();
 				break;
 		case 4: renterMenu();
 				break;
 		}
 	}
-	
+
 	private void vendorMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
@@ -204,6 +204,35 @@ public class Menu {
 		Main.editSaleProperty(target,this.userId);
 	}
 
+	private void buyerMenu() {
+		Scanner sc = new Scanner(System.in);
+		System.out.printf(
+				  "\n\nVeryCool S&E Real Estate Software Solution\n"
+				  + "--Renter Menu--\n\n"
+				+ "What would you like to do?\n"
+				+ "1: Browse all Rental Properties\n"
+				+ "2: Browse Rental Properties by Suburb\n"
+				+ "3: Apply for a Rental Property\n"
+				+ "4: View your Rental Applications\n"
+				+ "5: Logout\n\n"
+				+ "Enter Selection: ");
+		int input = sc.nextInt();
+		switch(input)
+		{
+		case 1:
+			break;
+			
+		case 2:
+			break;
+			
+		case 3:
+			break;
+			
+		case 4:
+			break;
+		}
+	}
+	
 	private void renterMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
