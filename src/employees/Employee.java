@@ -17,9 +17,9 @@ public abstract class Employee {
 	 * 8: BranchAdministrator
 	 */
 	
-	private boolean branchManager = false;
 	private boolean salesConsultant = false;
 	private boolean propertyManager = false;
+	private boolean branchManager = false;
 	private boolean branchAdmin = false;
 	
 	protected ArrayList<String> managedRentalProperties = new ArrayList<String>();

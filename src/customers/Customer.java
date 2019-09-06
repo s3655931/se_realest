@@ -103,6 +103,12 @@ public class Customer {
 		this.customerType = customerType;
 	}
 	
+	//builds a string representing all the roles of this customer, e.g a landlord/buyer will return "23"
+	//when building the main menu, construct menu items with ifs (if getAllCustomerTypes.contains("1") etc)
+	public String getAllCustomerTypes() {
+		return((this.vendor ? "1" : "") + (this.landlord ? "2" : "") + (this.buyer ? "3" : "") + (this.renter ? "4" : ""));
+	}
+	
 	public void makeOffer(String propertyId, String customerId) {
 		this.madeOffers.add(propertyId + customerId);
 	}

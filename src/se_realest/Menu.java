@@ -28,6 +28,7 @@ public class Menu {
 	}
 	
 	public void begin() {
+		System.out.println("\nWelcome " + Main.getCustomerName(userId) + ".");
 		switch(this.userType) {
 		case 1: vendorMenu();
 				break;
@@ -43,7 +44,7 @@ public class Menu {
 	private void vendorMenu() {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
-				  "\n\nVeryCool™ S&E Real Estate Software Solution\n"
+				  "\nVeryCool™ S&E Real Estate Software Solution\n"
 				  + "--Vendor Menu--\n\n"
 				+ "What would you like to do?\n"
 				+ "1: Add Sale Property\n"
