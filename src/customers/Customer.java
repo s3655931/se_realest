@@ -62,6 +62,11 @@ public class Customer {
 		return this.id;
 	}
 	
+	public String getEmail()
+	{
+		return this.email;
+	}
+	
 	public boolean compareLogin(String email) {
 		return this.email.equals(email);
 	}
@@ -126,6 +131,12 @@ public class Customer {
 		sb.append(renter ? " Renter." : "");
 		sb.append(buyer ? " Prospective Buyer." : "");
 		return sb.toString();
+	}
+	
+	public String fileOutString()
+	{
+		String text = this.id + "," + this.name + "," + this.email + "," + this.customerType;
+		return text;
 	}
 	
 }

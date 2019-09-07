@@ -58,4 +58,7 @@ public abstract class Employee {
 	public String toString() {
 		return String.format("%s, E-mail: %s", this.name, this.email);
 	}
+
+	public abstract String fileOutString();
+
 }

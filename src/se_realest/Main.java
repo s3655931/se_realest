@@ -1,5 +1,11 @@
 package se_realest;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
+import java.util.Map.Entry;
+
 import properties.*;
 import customers.*;
 import employees.*;
@@ -20,7 +26,7 @@ public class Main {
 	private static HashMap<String, Customer> customers = new HashMap<String, Customer>();
 	private static HashMap<String, Employee> employees = new HashMap<String, Employee>();
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 		
 		//provide prefilled demo data
 		feedDemoData();
@@ -30,7 +36,7 @@ public class Main {
 		mainMenu();
 	}
 	
-	public static void login() {
+	public static void login() throws FileNotFoundException, IOException {
 		user = "";
 		Scanner sc = new Scanner(System.in);
 		String input;
@@ -77,7 +83,7 @@ public class Main {
 		
 	}
 	
-	public static void mainMenuManager() {
+	public static void mainMenuManager() throws FileNotFoundException, IOException {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
 				  "\n\nWelcome To The VeryCool S&E Real Estate Software Solution\n"
@@ -101,7 +107,7 @@ public class Main {
 		}
 	}
 
-	public static void mainMenuEmployee() {
+	public static void mainMenuEmployee() throws FileNotFoundException, IOException {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
 				  "\n\nEmployee Menu:"
@@ -124,7 +130,7 @@ public class Main {
 		}
 	}
 		
-	public static void mainMenu() {
+	public static void mainMenu() throws FileNotFoundException, IOException {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
 				  "\n\nWelcome To The VeryCool S&E Real Estate Software Solution\n\n"
@@ -132,7 +138,8 @@ public class Main {
 				+ "1: Add, Remove, or View Properties\n"
 				+ "2: Add, Remove, or View Customers\n"
 				+ "3: Add, Remove, or View Employees\n"
-				+ "4: Logout\n\n"
+				+ "4: Logout\n"
+				+ "5: Save data\n\n"
 				+ "Enter Selection: ");
 		int input = sc.nextInt();
 		switch(input) {
@@ -142,14 +149,14 @@ public class Main {
 				 break;
 		case 3:  employeeMenu();
 				 break;
+		case 5:  outputData(rentalProperties, saleProperties, customers, employees);
 		case 4:  logout();
-		
 		default: mainMenu();
 				 break;
 		}
 	}
 	
-	private static void propertyMenu() {
+	private static void propertyMenu() throws FileNotFoundException, IOException {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
 				  "What would you like to do?\n\n"
@@ -183,7 +190,7 @@ public class Main {
 		}
 	}
 	
-	private static void customerMenu() {
+	private static void customerMenu() throws FileNotFoundException, IOException {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
 				  "What would you like to do?\n\n"
@@ -211,7 +218,7 @@ public class Main {
 	
 	
 
-	private static void employeeMenu() {
+	private static void employeeMenu() throws FileNotFoundException, IOException {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
 				  "What would you like to do?\n\n"
@@ -361,7 +368,7 @@ public class Main {
 		return true;
 	}
 	
-	static void newEmployee() {
+	static void newEmployee() throws FileNotFoundException, IOException {
 		Scanner sc = new Scanner(System.in);
 		String name;
 		String email;
@@ -553,7 +560,7 @@ public class Main {
 	}
 	
 	
-	public static void logout() {
+	public static void logout() throws FileNotFoundException, IOException {
 		//wipes the instances of Menu objects, removing any customer or employee data from the cache
 		System.out.print("Goodbye.");
 		godMenu = null;
@@ -607,7 +614,51 @@ public class Main {
 		employees.put("E001", new FullTimeEmployee("E001", "Boss Man", "boss@serealest.com.au", 250000));
 		employees.get("E001").setEmployeeType(0);
 		
-		employees.put("E002",  new FullTimeEmployee("E002", "Alice Admin", "alice@serealest.com.au", 90000));
-				
+		employees.put("E002",  new FullTimeEmployee("E002", "Alice Admin", "alice@serealest.com.au", 90000));			
+	}
+	public static void inputData(HashMap<String, RentalProperty> rentalProperties,
+			HashMap<String, SaleProperty> saleProperties,
+			HashMap<String, Customer> customers,
+			HashMap<String, Employee> employees)throws IOException, FileNotFoundException
+	{
+		
+	}
+	
+	public static void outputData(HashMap<String, RentalProperty> rentalProperties,
+			HashMap<String, SaleProperty> saleProperties,
+			HashMap<String, Customer> customers,
+			HashMap<String, Employee> employees)throws IOException, FileNotFoundException
+	{
+		File fileCustomer = new File("testoutCustomer.txt");
+		PrintWriter outputCustomer = new PrintWriter(fileCustomer);
+		for (HashMap.Entry<String, Customer> entry : customers.entrySet())
+		{
+			outputCustomer.println(entry.getValue().fileOutString());
+		}
+		outputCustomer.close();
+		
+		File fileEmployee = new File("testoutEmployee.txt");
+		PrintWriter outputEmployee = new PrintWriter(fileEmployee);
+		for (HashMap.Entry<String, Employee> entry : employees.entrySet())
+		{
+			outputEmployee.println(entry.getValue().fileOutString());
+		}
+		outputEmployee.close();
+		
+		File fileRental = new File("testoutRental.txt");
+		PrintWriter outputRental = new PrintWriter(fileRental);
+		for (HashMap.Entry<String, RentalProperty> entry : rentalProperties.entrySet())
+		{
+			outputRental.println(entry.getValue().fileOutString());
+		}
+		outputRental.close();
+		
+		File fileSale = new File("testoutSale.txt");
+		PrintWriter outputSale = new PrintWriter(fileSale);
+		for (HashMap.Entry<String, SaleProperty> entry : saleProperties.entrySet())
+		{
+			outputSale.println(entry.getValue().fileOutString());
+		}
+		outputSale.close();
 	}
 }

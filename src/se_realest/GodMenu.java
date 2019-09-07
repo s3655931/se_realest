@@ -1,5 +1,7 @@
 package se_realest;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class GodMenu extends Menu{
@@ -9,7 +11,7 @@ public class GodMenu extends Menu{
 		super(userId, userType);
 	}
 	
-	public void godMenu() {
+	public void godMenu() throws FileNotFoundException, IOException {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
 				  "\nVeryCool™ S&E Real Estate Software Solution\n"
@@ -35,7 +37,7 @@ public class GodMenu extends Menu{
 		}
 	}
 	
-	private void propertyGodMenu() {
+	private void propertyGodMenu() throws FileNotFoundException, IOException {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
 				  "\nWhat would you like to do?\n\n"
@@ -81,7 +83,7 @@ public class GodMenu extends Menu{
 		}
 	}
 	
-	private void customerGodMenu() {
+	private void customerGodMenu() throws FileNotFoundException, IOException {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
 				  "\nWhat would you like to do?\n\n"
@@ -103,7 +105,7 @@ public class GodMenu extends Menu{
 		}
 	}
 	
-	private void employeeGodMenu() {
+	private void employeeGodMenu() throws FileNotFoundException, IOException {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
 				  "\nWhat would you like to do?\n\n"

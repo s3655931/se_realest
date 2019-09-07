@@ -1,0 +1,6 @@
+P012,200 Red Road,Hawthorn,C011,580.0,12
+P011,100 Green Road,Hawthorn,C011,750.0,12
+P014,42 Wallaby Way,Footscray,C011,550.0,12
+P013,55 Yellow St,Fitzroy,C011,620.0,12
+P098,742 Evergreen Terrace,Springfield,C098,800.0,24
+P097,42 Wallaby Way,Sydney,C097,500.0,12

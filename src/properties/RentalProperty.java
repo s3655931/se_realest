@@ -44,6 +44,7 @@ public class RentalProperty extends Property {
 		this.rentalOffers.put(this.propertyId + customerId, new Offer(this.propertyId + customerId, customerId, price));
 	}
 	
+	
 	public HashMap<String,Offer> getOffers(){
 		return this.rentalOffers;
 	}
@@ -64,5 +65,12 @@ public class RentalProperty extends Property {
 		return String.format("%s %s, owned by %s, $%,.2f weekly, %s%s", 
 				this.address, this.suburb, Main.getCustomerName(this.ownerId), this.rentalPrice, 
 				this.onMarket ? "Available for rent. " : "Unavailable for rent. ", this.onMarket ? this.rentalOffers.size() + " offers." : "");
+	}
+	
+	public String fileOutString()
+	{
+		String text = this.propertyId + "," + this.address + "," + this.suburb + ","
+				+ this.ownerId + "," + this.rentalPrice + "," + this.leaseLength;
+		return text;
 	}
 }

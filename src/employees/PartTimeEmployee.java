@@ -17,6 +17,14 @@ public class PartTimeEmployee extends Employee {
 		return this.monthlyHours;
 	}
 
+	@Override
+	public String fileOutString() {
+		String text = this.id + "," + this.name + "," + this.email + "," + this.salary;
+		return text;
+	}
+	
+//	employees.put("E097", new PartTimeEmployee("E097","Michael Bay", "bang@boom.com", 60000));
+
 	// Hours
 	// Modified pay
 	

@@ -37,6 +37,21 @@ public abstract class Property {
     	return this.propertyId;
     }
     
+    public String getAddress() 
+    {
+    	return this.address;
+    }
+    
+    public String getSuburb()
+    {
+    	return this.suburb;
+    }
+    
+    public String getOwner()
+    {
+    	return this.ownerId;
+    }
+    
     public boolean isAvailable() {
     	return this.onMarket;
     }

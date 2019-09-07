@@ -1,0 +1,6 @@
+C011,N. Vester,nvester@bigmoney.com,2
+C099,Donald Trump,trump@donaldtrump.com,1
+C098,Homer Simpson,homer@compuglobalhypermeganet.com,4
+C097,P. Sherman,psherman@pearlywhites.com.au,4
+C096,Scrooge McDuck,scrooge@mcduck.com,3
+C095,Donald Duck,donald@duck.com,4

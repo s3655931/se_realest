@@ -1,5 +1,7 @@
 package se_realest;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
@@ -27,7 +29,7 @@ public class Menu {
 		this.userType = userType;
 	}
 	
-	public void begin() {
+	public void begin() throws FileNotFoundException, IOException {
 		System.out.println("\nWelcome " + Main.getCustomerName(userId) + ".");
 		switch(this.userType) {
 		case 1: vendorMenu();
@@ -41,7 +43,7 @@ public class Menu {
 		}
 	}
 
-	private void vendorMenu() {
+	private void vendorMenu() throws FileNotFoundException, IOException {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
 				  "\nVeryCool™ S&E Real Estate Software Solution\n"
@@ -121,7 +123,7 @@ public class Menu {
 		Main.editSaleProperty(target,this.userId);
 	}
 
-	public void landlordMenu() {
+	public void landlordMenu() throws FileNotFoundException, IOException {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
 				  "\n\nVeryCool™ S&E Real Estate Software Solution\n"
@@ -209,18 +211,19 @@ public class Menu {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
 				  "\n\nVeryCool S&E Real Estate Software Solution\n"
-				  + "--Renter Menu--\n\n"
+				  + "--Buyer Menu--\n\n"
 				+ "What would you like to do?\n"
-				+ "1: Browse all Rental Properties\n"
-				+ "2: Browse Rental Properties by Suburb\n"
-				+ "3: Apply for a Rental Property\n"
-				+ "4: View your Rental Applications\n"
+				+ "1: Browse all Properties for Sale\n"
+				+ "2: Browse Properties for Sale by Suburb\n"
+				+ "3: Apply for a Properties for Sale\n"
+				+ "4: View your Sale Propertie Applications\n"
 				+ "5: Logout\n\n"
 				+ "Enter Selection: ");
 		int input = sc.nextInt();
 		switch(input)
 		{
 		case 1:
+			System.out.print("dsad");
 			break;
 			
 		case 2:
@@ -234,7 +237,8 @@ public class Menu {
 		}
 	}
 	
-	private void renterMenu() {
+	
+	private void renterMenu() throws FileNotFoundException, IOException {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
 				  "\n\nVeryCool™ S&E Real Estate Software Solution\n"
@@ -277,7 +281,7 @@ public class Menu {
 		Main.applyForRental(userId);
 	}
 	
-	private void logout() {
+	private void logout() throws FileNotFoundException, IOException {
 		Main.logout();
 	}
 }

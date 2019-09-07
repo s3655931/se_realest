@@ -46,5 +46,13 @@ public class SaleProperty extends Property{
 				this.onMarket ? this.saleInspections.size() + " inspection(s) scheduled." : "");
     }
 
+	public String fileOutString() {
+		String text = this.propertyId + "," + this.address + "," + this.suburb + ","
+				+ this.ownerId + "," + this.salePrice + "," + this.onMarket + ","
+				+ this.employeeId;
+		
+		return text;
+	}
+
 }
 
