@@ -29,7 +29,8 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		
 		//provide prefilled demo data
-		feedDemoData();
+//		feedDemoData();
+		inputData(rentalProperties, saleProperties, customers, employees);
 		//login
 		login();
 		//main 
@@ -621,8 +622,120 @@ public class Main {
 			HashMap<String, Customer> customers,
 			HashMap<String, Employee> employees)throws IOException, FileNotFoundException
 	{
+		File fileCustomer = new File("testinCustomer.txt");
+		Scanner inputCustomer = new Scanner(fileCustomer);
+		String tokenCustomer = "";
+		String[] textCustomer = null;
+
+		while(inputCustomer.hasNextLine())
+		{
+			tokenCustomer = inputCustomer.nextLine();
+//			System.out.println(tokenCustomer);
+			textCustomer = tokenCustomer.split(",");
+//			For debugging
+//			for(int i = 0; i<textCustomer.length; i++)
+//			{
+//				System.out.println(i + "." + textCustomer[i]);
+//			}
+			customers.put(textCustomer[0], new Customer(textCustomer[0], 
+					textCustomer[1], textCustomer[2], Integer.parseInt(textCustomer[3])));
+		}
+		inputCustomer.close();
 		
-	}
+		File fileEmployee = new File("testinEmployee.txt");
+		Scanner inputEmployee = new Scanner(fileEmployee);
+		String tokenEmployee = "";
+		String[] textEmployee = null;
+		
+		while(inputEmployee.hasNextLine())
+		{
+			tokenEmployee = inputEmployee.nextLine();
+//			System.out.println(tokenEmployee);
+			textEmployee = tokenEmployee.split(",");
+//			For debugging
+//			for(int i = 0; i<textEmployee.length; i++)
+//			{
+//				System.out.println(i + "." + textEmployee[i]);
+//			}
+			if(textEmployee.length == 5)
+			{
+				employees.put(textEmployee[0], new FullTimeEmployee(textEmployee[0], 
+						textEmployee[1], textEmployee[2], Double.parseDouble(textEmployee[3])));
+				employees.get(textEmployee[0]).setEmployeeType(Integer.parseInt(textEmployee[4]));
+			}
+			else if(textEmployee.length == 4)
+			{
+				employees.put(textEmployee[0], new PartTimeEmployee(textEmployee[0], 
+						textEmployee[1], textEmployee[2], Double.parseDouble(textEmployee[3])));
+			}
+			else
+			{
+				System.out.println("Error");
+			}
+			
+		}
+		inputEmployee.close();
+		
+		File fileSale = new File("testinSale.txt");
+		Scanner inputSale = new Scanner(fileSale);
+		String tokenSale = "";
+		String[] textSale = null;
+		
+		while(inputSale.hasNextLine())
+		{
+			tokenSale = inputSale.nextLine();
+//			System.out.println(tokenSale);
+			textSale = tokenSale.split(",");
+//			For debugging
+//			for(int i = 0; i<textSale.length; i++)
+//			{
+//				System.out.println(i + "." + textSale[i]);
+//			}
+			saleProperties.put(textSale[0], new SaleProperty(textSale[0], 
+					textSale[1], textSale[2], textSale[3], Double.parseDouble(textSale[4])));
+			customers.get(textSale[3]).vendor = Boolean.parseBoolean(textSale[5]);
+			customers.get(textSale[3]).addSaleProperty(textSale[0]);
+			saleProperties.get(textSale[0]).assignSalesConsultant(textSale[6]);
+		}
+		inputSale.close();
+		
+		File fileRent = new File("testinRental.txt");
+		Scanner inputRent = new Scanner(fileRent);
+		String tokenRent = "";
+		String[] textRent = null;
+		
+		while(inputRent.hasNextLine())
+		{
+			tokenRent = inputRent.nextLine();
+//			System.out.println(tokenRent);
+			textRent = tokenRent.split(",");
+//			For debugging
+//			for(int i = 0; i<textRent.length; i++)
+//			{
+//				System.out.println(i + "." + textRent[i]);
+//			}
+			rentalProperties.put(textRent[0], new RentalProperty(textRent[0], 
+					textRent[1], textRent[2], textRent[3], Double.parseDouble(textRent[4]), 
+					Integer.parseInt(textRent[5])));
+			if(customers.get(textRent[3]).getCustomerType() == 4)
+			{
+				customers.get(textRent[3]).makeTenantOf(textRent[0]);
+			}
+			else if(customers.get(textRent[3]).getCustomerType() == 2)
+			{
+				customers.get(textRent[3]).addRentalProperty(textRent[0]);
+				rentalProperties.get(textRent[0]).makeAvailable();
+			}
+			
+			if(textRent[7].compareTo("null") != 0)
+			{
+				rentalProperties.get(textRent[0]).assignPropertyManager(textRent[7]);
+			}
+
+		}
+		inputRent.close();
+	}	
+	
 	
 	public static void outputData(HashMap<String, RentalProperty> rentalProperties,
 			HashMap<String, SaleProperty> saleProperties,

@@ -1,0 +1,5 @@
+E097,Michael Bay,bang@boom.com,60000.0
+E098,Jimbo Jones,jimmy@website.com,49000.0
+E099,Bruce Wayne,man@bat.com,1000000.0,0
+E001,Boss Man,boss@serealest.com.au,250000.0,0
+E002,Alice Admin,alice@serealest.com.au,90000.0,0

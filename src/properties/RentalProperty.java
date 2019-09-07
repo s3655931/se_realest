@@ -70,7 +70,8 @@ public class RentalProperty extends Property {
 	public String fileOutString()
 	{
 		String text = this.propertyId + "," + this.address + "," + this.suburb + ","
-				+ this.ownerId + "," + this.rentalPrice + "," + this.leaseLength;
+				+ this.ownerId + "," + this.rentalPrice + "," + this.leaseLength + ","
+				+ this.tenantId + "," + this.employeeId;
 		return text;
 	}
 }
