@@ -16,8 +16,5 @@ public class FullTimeEmployee extends Employee {
 //		employees.get("E001").setEmployeeType(0);
 		return text;
 	}
-
-	// Hours
-	// Modified pay
 	
 }

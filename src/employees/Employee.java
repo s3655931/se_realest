@@ -58,6 +58,22 @@ public abstract class Employee {
 	public String toString() {
 		return String.format("%s, E-mail: %s", this.name, this.email);
 	}
+	
+	public boolean approveHours(PartTimeEmployee tempEmp) {
+		
+		if ((getEmployeeType() == 7)) {
+			double tempSal = tempEmp.getSalary();
+			double tempHours = tempEmp.getHoursWorked();
+			
+			double newPay = (tempSal/12) * (tempHours/38);
+			
+			tempEmp.changeMonthPay(newPay);
+			
+			return true;
+		}
+		
+		return false;
+	}
 
 	public abstract String fileOutString();
 
