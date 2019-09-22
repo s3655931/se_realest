@@ -397,17 +397,68 @@ public class Main {
 	
 	static String newCustomer() {
 		Scanner sc = new Scanner(System.in);
-		System.out.print("Customer Name (eg. \"John Citizen\"):");
-		String name = sc.nextLine();
-		System.out.print("Customer E-mail (eg. \"john@website.com\"):");
-		String email = sc.nextLine();
-		System.out.printf("Customer type:\n"
-				+ "Vendor (selling)=1\n"
-				+ "Landlord (leasing)=2\n"
-				+ "Buyer (prospectively buying a property)=3 or\n"
-				+ "Renter (prospectively renting a property)=4\n"
-				+ "Please specify:");
-		int type = sc.nextInt();
+		String name = null;
+		boolean check = false;
+		while(check == false)
+		{
+			System.out.print("Customer Name (eg. \"John Citizen\"):");
+			name = sc.nextLine();
+			if(!name.matches("[a-zA-Z]+"))
+			{
+				System.out.println("Please enter a name without numbers");
+			}
+			else
+			{
+				check = true;
+			}
+		}
+		check = false;
+		String email = null;
+		while(check == false)
+		{
+			System.out.print("Customer E-mail (eg. \"john@website.com\"):");
+			email = sc.nextLine();
+			if(!email.matches("[a-zA-Z0-9]+\\@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+"))
+			{
+				System.out.println("Please enter a valid email");
+			}
+			else
+			{
+				check = true;
+			}
+		}
+		check = false;
+		int type = 0;
+		while(check == false)
+		{
+			System.out.printf("Customer type:\n"
+					+ "Vendor (selling)=1\n"
+					+ "Landlord (leasing)=2\n"
+					+ "Buyer (prospectively buying a property)=3 or\n"
+					+ "Renter (prospectively renting a property)=4\n"
+					+ "Please specify:");
+			
+			if(!sc.hasNextInt()) 
+			{
+				System.out.println("Input a number 1,2,3 or 4.");
+				sc.next();
+			}
+			else
+			{
+				int value = sc.nextInt();
+				if((value == 1)||(value == 2)||(value == 3)||(value == 4))
+				{
+					type = value;
+					check = true;
+				}
+				else
+				{
+					System.out.println("Please input a valid number (1,2,3 or 4).");
+				}
+				
+			}
+		}
+		
 		String id = newCustomerId();
 		customers.put(id, new Customer(id,name,email,type));
 		System.out.printf("Customer %s, %s has been successfully added.\n",id, name);

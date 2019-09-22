@@ -216,14 +216,14 @@ public class Menu {
 				+ "1: Browse all Properties for Sale\n"
 				+ "2: Browse Properties for Sale by Suburb\n"
 				+ "3: Apply for a Properties for Sale\n"
-				+ "4: View your Sale Propertie Applications\n"
+				+ "4: View your Sale Property Applications\n"
 				+ "5: Logout\n\n"
 				+ "Enter Selection: ");
 		int input = sc.nextInt();
 		switch(input)
 		{
 		case 1:
-			System.out.print("dsad");
+//			System.out.print("dsad");
 			break;
 			
 		case 2:
