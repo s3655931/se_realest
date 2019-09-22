@@ -426,7 +426,7 @@ public class Main {
 		{
 			System.out.print("Customer Name (eg. \"John Citizen\"):");
 			name = sc.nextLine();
-			if(!name.matches("[a-zA-Z]+"))
+			if(!name.matches("[a-zA-Z ]+"))
 			{
 				System.out.println("Please enter a name without numbers");
 			}
