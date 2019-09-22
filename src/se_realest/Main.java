@@ -357,12 +357,35 @@ public class Main {
 	
 	static boolean applyForRental(String customerId) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Please enter ID of Rental Property you'd like to apply for:");
-		String appliedForProperty = sc.next();
+		String appliedForProperty = null;
+		while(true)
+		{
+			System.out.println("Please enter ID of Rental Property you'd like to apply for:");
+			appliedForProperty = sc.next();
+			if(!appliedForProperty.matches("P[0-9]{3}"))
+			{
+				System.out.println("Please enter a valid property ID");
+			}
+			else if(!rentalProperties.containsKey(appliedForProperty))
+			{
+				System.out.printf("Rental Property ID: %s does not exist\n",appliedForProperty);
+			}
+			else
+			{
+				break;
+			}
+		}
+		
+		double offerPrice = 0;
 		System.out.printf("Applying for %s\nWhat weekly rent would you like to offer? \n"
 				+ "(it's unethical to allow bids on rental properties, but we won't tell anyone if you offer higher!)\n"
 				+ "Your weekly rent offer (in dollars and cents eg. 500.00):", rentalProperties.get(appliedForProperty).toString());
-		double offerPrice = sc.nextDouble();
+		while(!sc.hasNextDouble())
+		{
+				System.out.println("Please input a valid price in the format \"dollar\".\"cents\"");
+				sc.next();
+		}
+		offerPrice = sc.nextDouble();	
 		System.out.printf("\nSuccessfully offered $%,.2f weekly for %s.",offerPrice, rentalProperties.get(appliedForProperty).addressString());
 		rentalProperties.get(appliedForProperty).newOffer(customerId, offerPrice); 
 		customers.get(customerId).makeOffer(appliedForProperty, customerId);
