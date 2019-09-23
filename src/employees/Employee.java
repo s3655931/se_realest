@@ -17,10 +17,13 @@ public abstract class Employee {
 	 * 8: BranchAdministrator
 	 */
 	
-	private boolean salesConsultant = false;
-	private boolean propertyManager = false;
-	private boolean branchManager = false;
-	private boolean branchAdmin = false;
+//	enum employeeType {
+//		God,
+//		SalesConsultant,
+//		PropertyManager,
+//		BranchManager,
+//		BranchAdmin
+//	}
 	
 	protected ArrayList<String> managedRentalProperties = new ArrayList<String>();
 	protected ArrayList<String> consultingSaleProperties = new ArrayList<String>();
@@ -49,6 +52,7 @@ public abstract class Employee {
 		return this.email.equals(email);
 	}
 	public int getEmployeeType() {
+		// check for null
 		return this.employeeType;
 	}
 	public void setEmployeeType(int employeeType) {
@@ -73,6 +77,14 @@ public abstract class Employee {
 		}
 		
 		return false;
+	}
+	
+	public ArrayList<String> getRentalProperties() {
+		return managedRentalProperties;
+	}
+	
+	public ArrayList<String> getSaleProperties() {
+		return consultingSaleProperties;
 	}
 
 	public abstract String fileOutString();
