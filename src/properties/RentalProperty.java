@@ -23,8 +23,10 @@ public class RentalProperty extends Property {
 	// a property won't have a tenant upon creation, so call this when someone successfully rents it
 	public boolean assignTenant(String tenantId, int leaseLength) {
 		this.tenantId = tenantId;
-		System.out.printf("Customer %s is now the tenant of %s,%s for %i months, paying %.2f per week.", 
+		System.out.printf("Customer %s is now the tenant of %s, %s for %d months, paying $%,.2f per week.\n", 
 				this.tenantId, this.address, this.suburb, this.leaseLength, this.rentalPrice);
+		this.onMarket = false;
+		this.rentalOffers.clear();
 		return true;
 	}
 	

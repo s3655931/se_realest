@@ -20,8 +20,8 @@ public abstract class Property {
 		
     public boolean assignNewOwner(String ownerId, float price) {
 		this.ownerId = ownerId;
-		System.out.printf("Customer %s - %s is now the owner of %s,%s after paying $%.2f.",
-							this.ownerId, Main.getCustomerName(ownerId), this.address,this.suburb, price);
+		System.out.printf("Customer %s is now the owner of %s, %s after paying $%,.2f.\n",
+							this.ownerId, this.address,this.suburb, price);
 		return true;
 	}
     

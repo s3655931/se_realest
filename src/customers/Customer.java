@@ -81,6 +81,12 @@ public class Customer {
 		this.landlord = true;
 		this.rentalProperties.add(propertyId);
 	}
+	public void removeSaleProperty(String propertyId) {
+		this.saleProperties.remove(propertyId);
+		if(this.saleProperties.size() == 0) {
+			this.vendor = false;
+		}
+	}
 	//note that this customer purchased a property
 	public void addBoughtProperty(String propertyId) {
 		this.buyer = true;
@@ -98,6 +104,10 @@ public class Customer {
 	
 	public ArrayList<String> getRentalProperties() {
 		return this.rentalProperties;
+	}
+	
+	public ArrayList<String> getBoughtProperties() {
+		return this.boughtProperties;
 	}
 	
 	public int getCustomerType() {

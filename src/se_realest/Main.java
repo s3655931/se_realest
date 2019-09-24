@@ -691,6 +691,7 @@ public class Main {
 		
 		employees.put("E002",  new FullTimeEmployee("E002", "Alice Admin", "alice@serealest.com.au", 90000));			
 	}
+	
 	public static void inputData(HashMap<String, RentalProperty> rentalProperties,
 			HashMap<String, SaleProperty> saleProperties,
 			HashMap<String, Customer> customers,
