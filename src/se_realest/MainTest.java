@@ -56,6 +56,8 @@ class MainTest {
 		assertEquals(newName,"Donald Trump");
 	}
 	
+	//Successful application for rental property and check if the property's offer is under the 
+	//customer ID
 	@Test
 	void testApplyRental()
 	{
