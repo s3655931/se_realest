@@ -159,7 +159,7 @@ public class Menu {
 		}
 	}
 	
-	private void newRentalProperty() {
+	void newRentalProperty() {
 		Scanner sc = new Scanner(System.in);
 		String address;
 		String suburb;
@@ -179,7 +179,7 @@ public class Menu {
 		System.out.print(Main.addRentalProperty(id, address, suburb, this.userId, price, leaseLength));
 	}
 	
-	static void removeRentalProperty() {
+	void removeRentalProperty() {
 		Scanner sc = new Scanner(System.in);
 		String target;
 		System.out.printf("Please enter ID of Property you'd like to unlist:");

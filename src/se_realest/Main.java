@@ -21,10 +21,10 @@ public class Main {
 	private static int employeeIdTracker = 100;
 
 	//hashmaps allow for easy data lookup using IDs, which almost every object will have
-	private static HashMap<String, RentalProperty> rentalProperties = new HashMap<String, RentalProperty>();
-	private static HashMap<String, SaleProperty> saleProperties = new HashMap<String, SaleProperty>();
-	private static HashMap<String, Customer> customers = new HashMap<String, Customer>();
-	private static HashMap<String, Employee> employees = new HashMap<String, Employee>();
+	static HashMap<String, RentalProperty> rentalProperties = new HashMap<String, RentalProperty>();
+	static HashMap<String, SaleProperty> saleProperties = new HashMap<String, SaleProperty>();
+	static HashMap<String, Customer> customers = new HashMap<String, Customer>();
+	static HashMap<String, Employee> employees = new HashMap<String, Employee>();
 	
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		
