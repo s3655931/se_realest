@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+import customers.Customer;
+
 public class Menu {
 
 	private String userId;
@@ -207,7 +209,7 @@ public class Menu {
 		Main.editSaleProperty(target,this.userId);
 	}
 
-	private void buyerMenu() {
+	private void buyerMenu() throws FileNotFoundException, IOException {
 		Scanner sc = new Scanner(System.in);
 		System.out.printf(
 				  "\n\nVeryCool S&E Real Estate Software Solution\n"
@@ -215,28 +217,29 @@ public class Menu {
 				+ "What would you like to do?\n"
 				+ "1: Browse all Properties for Sale\n"
 				+ "2: Browse Properties for Sale by Suburb\n"
-				+ "3: Apply for a Properties for Sale\n"
+				+ "3: Apply for a Property\n"
 				+ "4: View your Sale Property Applications\n"
 				+ "5: Logout\n\n"
 				+ "Enter Selection: ");
 		int input = sc.nextInt();
 		switch(input)
 		{
-		case 1:
-//			System.out.print("dsad");
-			break;
-			
-		case 2:
-			break;
-			
-		case 3:
-			break;
-			
-		case 4:
-			break;
+		case 1: System.out.print(Main.getAllSales());
+				buyerMenu();
+				break;
+		case 2: findSalesBySuburb();
+				buyerMenu();
+				break;
+		case 3: applyForSale();
+				buyerMenu();
+				break;
+		case 4: System.out.print(Main.getSaleOffersBy(userId));
+				buyerMenu();
+				break;
+		case 5: logout();
+		default:buyerMenu();
 		}
 	}
-	
 	
 	private void renterMenu() throws FileNotFoundException, IOException {
 		Scanner sc = new Scanner(System.in);
@@ -261,7 +264,7 @@ public class Menu {
 		case 3: applyForRental();
 				renterMenu();
 				break;		
-		case 4: System.out.print(Main.getOffersBy(userId));
+		case 4: System.out.print(Main.getRentalOffersBy(userId));
 				renterMenu();
 				break;
 		case 5: logout();
@@ -277,8 +280,19 @@ public class Menu {
 	    System.out.print(Main.findRentalsBySuburb(suburb));
 	}
 	
+	private void findSalesBySuburb() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please enter suburb you'd like to search for Rental Properties:");
+	    String suburb = sc.next();
+	    System.out.print(Main.findSalesBySuburb(suburb));
+	}
+	
 	private void applyForRental() {
 		Main.applyForRental(userId);
+	}
+	
+	private void applyForSale() {
+		Main.applyForSale(userId);
 	}
 	
 	private void logout() throws FileNotFoundException, IOException {

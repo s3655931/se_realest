@@ -54,5 +54,18 @@ public class SaleProperty extends Property{
 		return text;
 	}
 
+	public boolean compareSuburb(String suburb) {
+		return this.suburb.toLowerCase().equals(suburb.toLowerCase());
+	}
+	
+	public String addressString() {
+		return (this.address + " " + this.suburb);
+	}
+	
+	public void newOffer(String customerId, double price) {
+		this.saleOffers.put(this.propertyId + customerId, new Offer(this.propertyId + customerId, customerId, price));
+	}
+
+
 }
 
